@@ -1,0 +1,223 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    scroll-behavior: smooth;
+    font-family: 'Lato', sans-serif;
+  }
+  
+  /* Navbar */
+  #navbar {
+    background: #f9f9f9;
+  }
+  
+  #logo {
+    font-size: 36px;
+    font-weight: 550;
+    color: black;
+    text-shadow: 0px 1px 1px black;
+    margin-bottom: 5px;
+  }
+  
+  #logo span {
+    color: orange;
+  }
+  
+  .navbar-toggler span {
+    color: orange;
+  }
+  
+  .navbar-nav {
+    margin-left: 20px;
+  }
+  
+  .nav-item .nav-link {
+    font-size: 16px;
+    font-weight: 550;
+    color: black;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    transition: 0.5s ease;
+  }
+  
+  .nav-item .nav-link:hover {
+    background: orange;
+    color: white;
+  }
+  
+  #navbar form button {
+    background: orange;
+    color: white;
+    border: none;
+  }
+  
+  /* Sección Home */
+  .home {
+    width: 100%;
+    height: 90vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), url(../css/app2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .home .contenido {
+    text-align: center;
+    padding-top: 100px;
+  }
+  
+  .home .contenido h5 {
+    color: rgb(184, 184, 184);
+    font-size: 38px;
+    font-weight: 550;
+    text-shadow: 0px 1px 1px black;
+  }
+  
+  .home .contenido h1 {
+    color: rgb(184, 184, 184);
+    font-size: 70px;
+    font-weight: 550;
+    text-shadow: 0px 1px 1px black;
+    margin-top: 5px;
+  }
+  
+  .home .contenido p {
+    color: rgb(184, 184, 184);
+    font-size: 15px;
+    font-weight: 600;
+    text-shadow: 0px 1px 1px black;
+    margin-bottom: 30px;
+    margin-top: 5px;
+  }
+  
+  .home .contenido a {
+    padding: 10px;
+    background: white;
+    color: black;
+    letter-spacing: 2px;
+    font-weight: 550;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.5s;
+  }
+  
+  .home .contenido a:hover {
+    background: #ffa500;
+    color: white;
+  }
+  
+  /* Sección Texto Principal */
+  .main-txt h1 {
+    text-align: center;
+    margin-top: 30px;
+    font-weight: 600;
+    text-shadow: 0px 1px 1px black;
+  }
+  
+  .main-txt h1 span {
+    color: #ffa500;
+  }
+  
+  /* Sección Servicios */
+  .servicios {
+    background: #f9f9f9;
+    margin-top: 50px;
+  }
+  
+  .servicios .card {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .servicios .card i {
+    font-size: 80px;
+    text-align: center;
+    color: #ffa500;
+    margin-top: 20px;
+  }
+  
+  .servicios .card .card-body h3 {
+    font-weight: 600;
+  }
+  
+  .servicios .card .card-body {
+    text-align: center;
+  }
+  
+  /* Sección Acerca de */
+  .acerca {
+    padding: 50px;
+    margin-top: 50px;
+    background: #f9f9f9;
+  }
+  
+  .acerca .card {
+    border-radius: 10px;
+  }
+  
+  .acerca .card img {
+    border-radius: 10px;
+  }
+  
+  .acerca h2 {
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  
+  .acerca p {
+    font-weight: 500;
+  }
+  
+  #acerca-btn {
+    width: 150px;
+    height: 38px;
+    border: none;
+    border-radius: 5px;
+    background: #ffa500;
+    color: white;
+    letter-spacing: 2px;
+    font-weight: 550;
+    transition: 0.5s ease;
+    cursor: pointer;
+  }
+  
+  #acerca-btn:hover {
+    width: 170px;
+  }
+  
+  /* Estilos para el formulario de contacto */
+  .contacto {
+    padding: 50px 0;
+  }
+  
+  .contacto h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .contacto form {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .contacto label {
+    font-weight: bold;
+  }
+  
+  .contacto .form-control {
+    margin-bottom: 20px;
+  }
+  
+  .contacto textarea {
+    resize: none;
+  }
+  
+  .contacto p {
+    font-size: 1.1rem;
+    text-align: center;
+  }

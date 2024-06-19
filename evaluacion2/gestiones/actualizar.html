@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../js/crear.js"></script>
+    <title>Editar Gestión</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Editar Gestión</h1>
+        <form id="editarGestionForm">
+            <input type="hidden" id="id_gestion" name="id_gestion" value="">
+            <div class="mb-3">
+                <label for="sel_id_usuario" class="form-label">Usuario</label>
+                <select class="form-select" id="sel_id_usuario" required></select>
+            </div>
+            <div class="mb-3">
+                <label for="sel_id_cliente" class="form-label">Cliente</label>
+                <select class="form-select" id="sel_id_cliente" required></select>
+            </div>
+            <div class="mb-3">
+                <label for="sel_id_tipo_gestion" class="form-label">Tipo de Gestión</label>
+                <select class="form-select" id="sel_id_tipo_gestion" required></select>
+            </div>
+            <div class="mb-3">
+                <label for="sel_id_resultado" class="form-label">Resultado</label>
+                <select class="form-select" id="sel_id_resultado" required></select>
+            </div>
+            <div class="mb-3">
+                <label for="txt_comentarios" class="form-label">Comentarios</label>
+                <textarea class="form-control" id="txt_comentarios" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            var urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('id')) {
+                var id_gestion = urlParams.get('id');
+                $.ajax({
+                    url: 'http://localhost:8080/evaluacion2/ctrl/obtener_gestion.php',
+                    type: 'GET',
+                    data: { id_gestion: id_gestion },
+                    success: function(response) {
+                        var gestion = JSON.parse(response);
+
+                        $('#id_gestion').val(gestion.id_gestion);
+                        $('#sel_id_usuario').val(gestion.id_usuario);
+                        $('#sel_id_cliente').val(gestion.id_cliente);
+                        $('#sel_id_tipo_gestion').val(gestion.id_tipo_gestion);
+                        $('#sel_id_resultado').val(gestion.id_resultado);
+                        $('#txt_comentarios').val(gestion.comentarios);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                        alert('Error al cargar la gestión.');
+                    }
+                });
+            }
+
+            var btnConfirmDelete = document.getElementById('btnConfirmDelete');
+            if (btnConfirmDelete) {
+                btnConfirmDelete.addEventListener('click', function() {
+                    var gestionToDelete = $('#id_gestion').val();
+                    if (gestionToDelete) {
+                        eliminarGestion(gestionToDelete);
+                    }
+                });
+            }
+
+            function eliminarGestion(id_gestion) {
+                const myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+
+                const requestOptions = {
+                    method: "DELETE",
+                    headers: myHeaders,
+                    redirect: "follow"
+                };
+
+                fetch("http://144.126.210.74:8080/api/gestion/" + id_gestion, requestOptions)
+                    .then(response => {
+                        if (response.status === 200) {
+                            showSuccessToast();
+                            setTimeout(function() {
+                                location.reload();
+                            }, 1500);
+                        } else {
+                            alert("Error al eliminar la gestión");
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+
+            function showSuccessToast() {
+                var toastEl = document.getElementById('successToast');
+                var toast = new bootstrap.Toast(toastEl);
+                toast.show();
+            }
+        });
+    </script>
+
+</body>
+</html>
